@@ -22,15 +22,15 @@ args = vars(ap.parse_args())
 
 # Import function method
 if args['method'] == 'fast':
-  from lib.oeis.fast import a000396_perfect_numbers
+  from lib.oeis.fast import a001348_mersenne_number
 else:
-  from lib.oeis.learn import a000396_perfect_numbers
+  from lib.oeis.learn import a001348_mersenne_number
 
 # Compute primes
-a000040_list = list(a000396_perfect_numbers(args['maxn']))
+a001348_list = list(a001348_mersenne_number(args['maxn']))
 if not args['bench']:
-  for n,p in enumerate(a000040_list,1):
-    if args['show_sequence']:
-      print(f'{n} {p}')
-    else:
-      print(p)
+    for n,p in enumerate(a001348_list,1):
+        if args['show_sequence']:
+            print(f'{n} {p}')
+        else:
+            print(p)

@@ -2,10 +2,12 @@
 The number theory
 
 ## Theory
+- [A000040](oeis/A000040_prime_numbers.py) Compute a prime numbers
+- [A000396](oeis/A000396_perfect_numbers.py) Compute a perfect numbers
 
-### Prime numbers (nb divisors)
-- [A008578](https://oeis.org/A008578) A number has two divisors is a prime number
-- [](https://oeis.org/) A number has odd divisors, contain primary number
+### Math tool
+- [divisors](lib/math.py) Compute a divisors for a number
+- [sum_divisors](lib/math.py) Compute a sum divisors for a number
 
 ## Install
 ```
@@ -31,4 +33,11 @@ python3 export_column.py -o list -q "select * from numbers where nb_divisors=5 l
 python3 export_column.py -o list -q "select * from numbers where nb_divisors=7 limit ${NB_DIVISORS}" -c num
 
 sqlite3 nums.db ".head on" ".mode column" "select * from numbers limit 10"
+```
+
+## Mesuring performance
+
+```
+time python3 A000396_perfect_numbers.py -n5
+/usr/lib/python3.7/profile.py -s cumtime A000396_perfect_numbers.py -n5
 ```
