@@ -36,13 +36,14 @@ def a001348_mersenne_number(maxn):
   isprimes = lib.math.value_in_idx(maxn, primes)
 
   mersenne = []
-  for n in range(2,maxn+1):
-    m = 2**n-1
-    if m > maxn:
-      mersenne.append(-1)
-      continue
+  for p in primes:
+    print(f'P: {p}')
+    m = 2**p-1
+    print(f'm: {m}')
     if isprimes[m]:
       mersenne.append(m)
+      print('oui')
+    print()
 
   # Save primes to cache
   lib.cache.save_cache(mersenne,f'mersenne_primes_{maxn}')

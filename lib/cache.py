@@ -20,6 +20,12 @@ def load_cache(filename):
     return datas
 
 def save_cache(datas,filename):
-    pfilename=os.path.join(ROOT,f'.cache/{filename}.cache')
+    # Create folder if not exists
+    folder = os.path.join(ROOT,'.cache')
+    if not os.path.exists(folder):
+        os.makedirs(folder)
+
+    # Open cache file
+    pfilename=os.path.join(folder,f'{filename}.cache')
     with open(pfilename, 'w') as f:
         json.dump(datas, f)
