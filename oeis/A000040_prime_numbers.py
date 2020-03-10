@@ -20,12 +20,12 @@ args = vars(ap.parse_args())
 
 # Import function method
 if args['method'] == 'fast':
-  from lib.oeis.fast import a000040_prime_numbers
+  from lib.oeis.fast import a000040_prime_boolean_numbers
 else:
-  from lib.oeis.learn import a000040_prime_numbers
+  from lib.oeis.learn import a000040_prime_boolean_numbers
 
 # Compute primes
-a000040_list = list(a000040_prime_numbers(args['maxn']))
+a000040_list = list(a000040_prime_boolean_numbers(args['maxn']))
 if not args['bench']:
   for n,p in enumerate(a000040_list,1):
     if args['show_sequence']:

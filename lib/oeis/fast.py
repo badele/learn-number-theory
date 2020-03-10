@@ -1,13 +1,42 @@
 import os
 import sys
 
+from bitarray import bitarray
+
 # Add module path
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")))
 
 import lib.math
 
+def fastrange(start,stop,step):
+   idx = start
+   while idx < stop:
+       yield i
+       i += step
 
 # Search prime numbers
+# https://stackoverflow.com/a/3035188/2015612
+def a000040_prime_boolean_numbers(maxn):
+  # Try load primes range from cache
+  primes = lib.cache.load_from_bitarray(f'primes_{maxn}_boolean')
+  if primes is not None:
+    return primes
+
+  # Generate primes
+  sieve = bitarray(maxn)
+  sieve.setall('1')
+  for i in range(3,int(maxn**0.5)+1,2):
+      if sieve[i]:
+          sieve[i**2::2*i] = False
+
+  # Save primes to cache
+  lib.cache.save_from_bitarray(sieve,f'primes_{maxn}_boolean')
+
+  return primes
+
+
+# Search prime numbers
+# https://stackoverflow.com/a/3035188/2015612
 def a000040_prime_numbers(maxn):
   # Try load primes range from cache
   primes = lib.cache.load_cache(f'primes_{maxn}')
