@@ -23,16 +23,20 @@ def a000040_prime_boolean_numbers(maxn):
     return primes
 
   # Generate primes
-  sieve = bitarray(maxn)
-  sieve.setall('1')
+  isprime = bitarray(maxn)
+  isprime.setall('1')
   for i in range(3,int(maxn**0.5)+1,2):
-      if sieve[i]:
-          sieve[i**2::2*i] = False
+      if isprime[i]:
+          isprime[i**2::2*i] = False
+
+  # Set no prime numbers
+  isprime[0:2] = False
+  isprime[4::2] = False
 
   # Save primes to cache
-  lib.cache.save_from_bitarray(sieve,f'primes_{maxn}_boolean')
+  lib.cache.save_from_bitarray(isprime,f'primes_{maxn}_boolean')
 
-  return primes
+  return isprime
 
 
 # Search prime numbers

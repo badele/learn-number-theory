@@ -3,6 +3,7 @@ import gc
 import sys
 import json
 from base64 import b64encode, b64decode
+from bitarray import bitarray
 
 # Add module path
 ROOT=os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
