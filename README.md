@@ -54,7 +54,15 @@ gnuplot -e "width=1002; filename='/tmp/ulam_artifact.png'" gnuplot/ulam.plt
 convert /tmp/ulam_artifact.png -fuzz 20% -trim /tmp/ulam.png
 ```
 
+## Manim
 
+Inspired from manin samples (created by 3blue1brown youtube channel) (https://github.com/3b1b/manim/pull/952)
+
+```
+cd manim
+docker run --rm -it -v $PWD:/tmp/input -v /tmp/assets:/tmp/input/assets -v $PWD:/tmp/output -w /tmp/input  --entrypoint '' eulertour/manim manim primes-1.py  SearchPrimes -l
+
+media/videos/spirals/480p15/IntroduceTotientJargon.mp4
 
 ## Compute consecutive square left numbers
 
