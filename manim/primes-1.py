@@ -34,6 +34,10 @@ def get_divisors(n):
 
 
 class SearchPrimes(Scene):
+    CONFIG = {
+        "maxn": 40,
+    }
+
     def construct(self):
         self.title()
         self.a_prime()
@@ -68,10 +72,6 @@ class SearchPrimes(Scene):
 
     def a_prime(self):
 
-        title_text = """
-            Un nombre est dit premier, si il admet seulement deux diviseurs\\\\
-            C'est \\`a dire un et lui m\\^eme\\\\
-        """
         title = TextMobject("Un nombre", "est dit premier,", "si il admet seulement", "deux diviseurs\\\\",
                             "C'est \\`a dire", "un et lui m\\^eme\\\\"
                             )
@@ -103,7 +103,7 @@ class SearchPrimes(Scene):
             VGroup(*[
                 Integer(n) for n in range(10 * k + 1, 10 * k + 11)
             ]).arrange(DOWN)
-            for k in range(0, 4)
+            for k in range(0, int(self.maxn / 10))
         ]).arrange(RIGHT, buff=1)
 
         numbers = VGroup(*it.chain(*number_grid))
